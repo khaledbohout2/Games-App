@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setAppearance()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = ViewController()
+        window?.rootViewController = BaseRouter.startHome()
         window?.makeKeyAndVisible()
 
         return true
