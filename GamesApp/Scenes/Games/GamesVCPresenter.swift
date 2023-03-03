@@ -79,10 +79,18 @@ class GamesVCPresenter: GamesVCPresenterDelegate {
     }
 
     func textDidChange(text: String?) {
-        games.removeAll()
-        pageNumber = 1
-        totalCount = 1
-        getRecentGames(pageNum: "\(pageNumber)", searchText: text)
+        guard let text = text else {return}
+        if text.count > 3 {
+            games.removeAll()
+            pageNumber = 1
+            totalCount = 1
+            getRecentGames(pageNum: "\(pageNumber)", searchText: text)
+        } else if text.count == 0 {
+            games.removeAll()
+            pageNumber = 1
+            totalCount = 1
+            getRecentGames(pageNum: "\(pageNumber)")
+        }
     }
 
 }

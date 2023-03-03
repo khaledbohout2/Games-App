@@ -13,7 +13,7 @@ extension UIViewController {
         return activityView
     }
 
-    func startLoading(message: String? = nil) {
+    func startLoading() {
         activityView.center = self.view.center
         self.view.addSubview(activityView)
         activityView.startAnimating()
