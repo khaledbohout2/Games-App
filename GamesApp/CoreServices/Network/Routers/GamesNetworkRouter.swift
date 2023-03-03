@@ -10,7 +10,7 @@ import Foundation
 
 enum GamesNetworkRouter: URLRequestConvertible {
 
-    case getLatest(pageNum: String)
+    case getLatest(pageNum: String, searchText: String?)
 
     var method: HTTPMethod {
         switch self {
@@ -21,8 +21,8 @@ enum GamesNetworkRouter: URLRequestConvertible {
 
     var parameters: [String: Any]? {
         switch self {
-        case .getLatest(let pageNum):
-            return ["page_size": "10", "page": pageNum, "key": Constants.apiKey]
+        case .getLatest(let pageNum, let searchText):
+            return ["page_size": "10", "page": pageNum, "key": Constants.apiKey, "search": searchText ?? ""]
         }
     }
 

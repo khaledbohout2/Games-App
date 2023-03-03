@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "nvactivityindicatorview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ninjaprox/NVActivityIndicatorView.git",
-      "state" : {
-        "revision" : "4a4726d15367d82bd3e9e1f01625bd76dbbb0c98",
-        "version" : "4.8.0"
-      }
-    },
-    {
       "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",

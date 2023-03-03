@@ -11,6 +11,7 @@ protocol GamesVCPresenterDelegate: BasePresenterProtocol {
     func getGamesCount() -> Int
     func configure(cell: GameCellDelegate, for index: Int)
     func didSelect(index: Int)
+    func textDidChange(text: String?)
 }
 
 class GamesVCPresenter: GamesVCPresenterDelegate {
@@ -63,9 +64,9 @@ class GamesVCPresenter: GamesVCPresenterDelegate {
 
     func didSelect(index: Int) {}
 
-    func getRecentGames(pageNum: String) {
+    func getRecentGames(pageNum: String, searchText: String? = nil) {
         view?.startLoading(message: nil)
-        repository.getLatest(pageNum: pageNum) { [weak self] response in
+        repository.getLatest(pageNum: pageNum, searchText: searchText) { [weak self] response in
             guard let self = self else {return}
             guard let data = self.handleRequestResponse(response, inView: self.view, withRouter: self.router),
                   let games = data.results else {
@@ -75,6 +76,13 @@ class GamesVCPresenter: GamesVCPresenterDelegate {
             self.games.append(contentsOf: games)
             self.totalCount = data.count ?? 1
         }
+    }
+
+    func textDidChange(text: String?) {
+        games.removeAll()
+        pageNumber = 1
+        totalCount = 1
+        getRecentGames(pageNum: "\(pageNumber)", searchText: text)
     }
 
 }

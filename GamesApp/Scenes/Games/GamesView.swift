@@ -12,6 +12,7 @@ class GamesView: BaseView {
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.tintColor = .appManatee.withAlphaComponent(0.12)
+        searchBar.backgroundColor = .appAlabaster.withAlphaComponent(0.92)
         return searchBar
     }()
 

@@ -17,7 +17,7 @@ extension GamesVC: GamesVCViewDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.mainView.gamesCollection.reloadData()
         }
-        guard !success else {return}
-        mainView.noContentLbl.isHidden = false
+        mainView.noContentLbl.isHidden = success
     }
+
 }

@@ -18,7 +18,6 @@
 		1B632F9F29AF62E5008209B2 /* UIView+anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B632F9E29AF62E5008209B2 /* UIView+anchor.swift */; };
 		1B632FA129AF62F0008209B2 /* UIView+makeRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B632FA029AF62F0008209B2 /* UIView+makeRounded.swift */; };
 		1B632FA329AF6304008209B2 /* UIview+fillSuperviewSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B632FA229AF6304008209B2 /* UIview+fillSuperviewSafeArea.swift */; };
-		1B632FA629AF638C008209B2 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 1B632FA529AF638C008209B2 /* NVActivityIndicatorView */; };
 		1B632FA929AF63E6008209B2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1B632FA829AF63E6008209B2 /* Alamofire */; };
 		1B632FB229AFAED6008209B2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B632FB129AFAED6008209B2 /* Network.swift */; };
 		1B632FB429AFAF1E008209B2 /* NetworkMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B632FB329AFAF1E008209B2 /* NetworkMiddleware.swift */; };
@@ -52,6 +51,7 @@
 		1B63300129B169DD008209B2 /* GamesNetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B63300029B169DD008209B2 /* GamesNetworkRouter.swift */; };
 		1B63300329B16BB4008209B2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B63300229B16BB4008209B2 /* Game.swift */; };
 		1B63300629B17085008209B2 /* UIImageView+LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B63300529B17085008209B2 /* UIImageView+LoadImage.swift */; };
+		1B63300829B189E0008209B2 /* GamesVC+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B63300729B189E0008209B2 /* GamesVC+SearchBarDelegate.swift */; };
 		1BFF3F3829AD311D00068AEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF3F3729AD311D00068AEF /* AppDelegate.swift */; };
 		1BFF3F4129AD311E00068AEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF3F4029AD311E00068AEF /* Assets.xcassets */; };
 		1BFF3F4429AD311E00068AEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BFF3F4229AD311E00068AEF /* LaunchScreen.storyboard */; };
@@ -121,6 +121,7 @@
 		1B63300029B169DD008209B2 /* GamesNetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesNetworkRouter.swift; sourceTree = "<group>"; };
 		1B63300229B16BB4008209B2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		1B63300529B17085008209B2 /* UIImageView+LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+LoadImage.swift"; sourceTree = "<group>"; };
+		1B63300729B189E0008209B2 /* GamesVC+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GamesVC+SearchBarDelegate.swift"; sourceTree = "<group>"; };
 		1BFF3F3429AD311D00068AEF /* GamesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFF3F3729AD311D00068AEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BFF3F4029AD311E00068AEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B632FFF29B168E2008209B2 /* SDWebImage in Frameworks */,
-				1B632FA629AF638C008209B2 /* NVActivityIndicatorView in Frameworks */,
 				1B632FA929AF63E6008209B2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +243,7 @@
 				1B632FD429B110EF008209B2 /* GamesVC.swift */,
 				1B632FE829B1261D008209B2 /* GamesVC+CollectionViewDelegate.swift */,
 				1B632FED29B12791008209B2 /* GamesVC+ViewDelegate.swift */,
+				1B63300729B189E0008209B2 /* GamesVC+SearchBarDelegate.swift */,
 				1B632FDE29B11CE3008209B2 /* GameCell */,
 				1B632FCE29B0FC91008209B2 /* GamesVCPresenter.swift */,
 			);
@@ -494,7 +495,6 @@
 			);
 			name = GamesApp;
 			packageProductDependencies = (
-				1B632FA529AF638C008209B2 /* NVActivityIndicatorView */,
 				1B632FA829AF63E6008209B2 /* Alamofire */,
 				1B632FFE29B168E2008209B2 /* SDWebImage */,
 			);
@@ -571,7 +571,6 @@
 			);
 			mainGroup = 1BFF3F2B29AD311D00068AEF;
 			packageReferences = (
-				1B632FA429AF638C008209B2 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				1B632FA729AF63E6008209B2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				1B632FFD29B168E2008209B2 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
@@ -640,6 +639,7 @@
 				1B632FE429B11D79008209B2 /* UICollectionView+identifier.swift in Sources */,
 				1B632F8C29AEC888008209B2 /* BaseView.swift in Sources */,
 				1B632FCC29B0FC77008209B2 /* FavouritesVCPresenter.swift in Sources */,
+				1B63300829B189E0008209B2 /* GamesVC+SearchBarDelegate.swift in Sources */,
 				1B632F9329AECC37008209B2 /* BaseRouter.swift in Sources */,
 				1B632F9C29AF62C7008209B2 /* UIViewController+showAlert.swift in Sources */,
 				1B632FD729B11102008209B2 /* FavouritesView.swift in Sources */,
@@ -1004,14 +1004,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1B632FA429AF638C008209B2 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
-			requirement = {
-				kind = exactVersion;
-				version = 4.8.0;
-			};
-		};
 		1B632FA729AF63E6008209B2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1031,11 +1023,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1B632FA529AF638C008209B2 /* NVActivityIndicatorView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1B632FA429AF638C008209B2 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
 		1B632FA829AF63E6008209B2 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1B632FA729AF63E6008209B2 /* XCRemoteSwiftPackageReference "Alamofire" */;

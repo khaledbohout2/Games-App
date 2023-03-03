@@ -5,25 +5,22 @@
 //  Created by Khaled Bohout on 01/03/2023.
 //
 
-import NVActivityIndicatorView
 import UIKit
 
-extension UIViewController: NVActivityIndicatorViewable {
-
-    func startLoading(message: String? = nil) {
-        NVActivityIndicatorView.DEFAULT_COLOR = .blue
-        NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = .black.withAlphaComponent(0.2)
-        NVActivityIndicatorView.DEFAULT_TEXT_COLOR = .black
-        NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE_FONT = .systemFont(ofSize: 14)
-        startAnimating(message: message, type: NVActivityIndicatorType.ballScaleMultiple)
+extension UIViewController {
+    var activityView: UIActivityIndicatorView {
+        let activityView = UIActivityIndicatorView(style: .whiteLarge)
+        return activityView
     }
 
-    func setLoadingMessage(message: String) {
-        NVActivityIndicatorPresenter.sharedInstance.setMessage(message)
+    func startLoading(message: String? = nil) {
+        activityView.center = self.view.center
+        self.view.addSubview(activityView)
+        activityView.startAnimating()
     }
 
     func stopLoading() {
-        stopAnimating()
+        activityView.stopAnimating()
     }
 
 }

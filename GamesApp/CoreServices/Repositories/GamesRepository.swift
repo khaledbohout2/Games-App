@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GamesRepositoryDelegate: AnyObject {
-    func getLatest(pageNum: String, completionHandler: @escaping(AFResult<BaseModelWithData<[Game]>>) -> Void)
+    func getLatest(pageNum: String, searchText: String?, completionHandler: @escaping(AFResult<BaseModelWithData<[Game]>>) -> Void)
 }
 
 class GamesRepository: GamesRepositoryDelegate{
@@ -19,8 +19,8 @@ class GamesRepository: GamesRepositoryDelegate{
         self.network = network
     }
 
-    func getLatest(pageNum: String, completionHandler: @escaping(AFResult<BaseModelWithData<[Game]>>) -> Void) {
-        network.request(GamesNetworkRouter.getLatest(pageNum: pageNum),
+    func getLatest(pageNum: String, searchText: String?, completionHandler: @escaping(AFResult<BaseModelWithData<[Game]>>) -> Void) {
+        network.request(GamesNetworkRouter.getLatest(pageNum: pageNum, searchText: searchText),
                         decodeTo: BaseModelWithData<[Game]>.self,
                         completionHandler: completionHandler)
     }
