@@ -9,7 +9,6 @@ import Foundation
 
 protocol BasePresenterProtocol: AnyObject {
     func viewDidLoad()
-    func didTapNotification()
     func handleRequestResponse<U: BaseCodable>(_ result: AFResult<U>,
                                                inView view: BaseViewProtocol?,
                                                withRouter router: BaseRouter?,

@@ -11,6 +11,9 @@ class MainTabBar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .appAlabaster.withAlphaComponent(0.8)
+        tabBar.backgroundColor = .appAlabaster.withAlphaComponent(0.8)
+        tabBar.isTranslucent = false
     }
 
     override func viewWillAppear(_ animated: Bool) {

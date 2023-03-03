@@ -11,7 +11,7 @@ protocol BaseViewProtocol: AnyObject {
     func startLoading(message: String?)
     func stopLoading()
     func showSelfDismissingAlert(_ message: String)
-    func setLeftNavTitle(_ title: String)
+    func setLeftNavTitle()
     func pop()
 }
 
@@ -33,18 +33,14 @@ extension BaseViewProtocol where Self: UIViewController {
         showAlert(message: message, time: time)
     }
 
-    func setLeftNavTitle(_ title: String) {
-        let label = UILabel()
-        label.text = title
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 22)
+    func setLeftNavTitle() {
         var topParent: UIViewController = self
         while topParent.parent != nil,
               String(describing: type(of: topParent.parent!.self))
                 != String(describing: UINavigationController.self) {
             topParent = topParent.parent!
         }
-        topParent.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+        topParent.navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     func pop() {

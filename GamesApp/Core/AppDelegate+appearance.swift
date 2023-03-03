@@ -23,14 +23,14 @@ extension AppDelegate {
             ]
             navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
             navBarAppearance.shadowColor = .clear
-            navBarAppearance.backgroundColor = .appBackground
+            navBarAppearance.backgroundColor = .appAlabaster.withAlphaComponent(0.92)
             UINavigationBar.appearance().standardAppearance = navBarAppearance
             UINavigationBar.appearance().compactAppearance = navBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         } else {
             UINavigationBar.appearance().tintColor = .black
             UINavigationBar.appearance().shadowImage = UIImage()
-            UINavigationBar.appearance().backgroundColor = UIColor.appBackground
+            UINavigationBar.appearance().backgroundColor = .appAlabaster.withAlphaComponent(0.92)
         }
         UINavigationBar.appearance().isTranslucent = false
     }
