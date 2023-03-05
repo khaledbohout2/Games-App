@@ -95,7 +95,7 @@ extension Network: NetworkProtocol {
     }
 }
 
-fileprivate extension NSError {
+extension NSError {
     class func create(description: String) -> NSError {
         return NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: description])
     }

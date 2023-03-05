@@ -28,4 +28,10 @@ struct BaseModelWithData<T: Codable>: BaseCodable {
         results = try? container.decode(T.self, forKey: .results)
         count = try? container.decode(Int.self, forKey: .count)
     }
+
+    init(error: String?, results: T, count: Int?) {
+        self.error = error
+        self.count = count
+        self.results = results
+    }
 }

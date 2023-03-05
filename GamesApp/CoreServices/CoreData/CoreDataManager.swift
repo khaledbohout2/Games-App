@@ -1,20 +1,19 @@
 //
-//  GamesRepository.swift
+//  CoreDataManager.swift
 //  GamesApp
 //
-//  Created by Khaled Bohout on 02/03/2023.
+//  Created by Khaled Bohout on 03/03/2023.
 //
 
+import Foundation
 import CoreData
 
-protocol GamesRepositoryProtocol {
-    func getLatest(pageNum: String?, searchText: String?) -> [Game]?
-}
+struct GameCoreDataRepository: GamesRepositoryDelegate {
 
-class newRepo: GamesRepositoryProtocol {
     let container: NSPersistentContainer
-    init(container: NSPersistentContainer){
-        self.container = container
+
+    init(){
+        container = NSPersistentContainer(name: "Main")
         container.loadPersistentStores { description, error in
             if error != nil {
                 fatalError("Cannot Load Core Data Model")
@@ -22,7 +21,7 @@ class newRepo: GamesRepositoryProtocol {
         }
     }
 
-    func getLatest(pageNum: String? = nil, searchText: String? = nil) -> [Game]? {
+    func getLatest(pageNum: String, searchText: String?, completionHandler: @escaping (AFResult<BaseModelWithData<[Game]>>) -> Void){
         let request = LatestGamesCoreDataEntity.fetchRequest()
         do {
             let games = try container.viewContext.fetch(request).map({ gameCoreDataEntity in
@@ -34,10 +33,13 @@ class newRepo: GamesRepositoryProtocol {
                     return genresArr
                 }))
             })
-            return games
+            let response = BaseModelWithData(error: nil, results: games, count: games.count)
+            completionHandler(.success(response))
         }
         catch {
-            return nil
+            // Couldn't create audio player object, log the error
+            print("Couldn't create the audio player for file")
+            completionHandler(.failure(NSError.create(description: "")))
         }
     }
 
@@ -46,29 +48,10 @@ class newRepo: GamesRepositoryProtocol {
         if context.hasChanges {
             do{
                 try context.save()
-                // publish notifications
             }catch{
                 fatalError("Error: \(error.localizedDescription)")
             }
         }
     }
-}
 
-protocol GamesRepositoryDelegate {
-    func getLatest(pageNum: String, searchText: String?, completionHandler: @escaping(AFResult<BaseModelWithData<[Game]>>) -> Void)
-}
-
-class GamesRepository: GamesRepositoryDelegate{
-
-    private var network: NetworkProtocol
-
-    init(network: NetworkProtocol) {
-        self.network = network
-    }
-
-    func getLatest(pageNum: String, searchText: String?, completionHandler: @escaping(AFResult<BaseModelWithData<[Game]>>) -> Void) {
-        network.request(GamesNetworkRouter.getLatest(pageNum: pageNum, searchText: searchText),
-                        decodeTo: BaseModelWithData<[Game]>.self,
-                        completionHandler: completionHandler)
-    }
 }

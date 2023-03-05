@@ -20,8 +20,8 @@ class GamesVCPresenter: GamesVCPresenterDelegate {
     private let router: GamesVCRouter
     private var repository: GamesRepositoryDelegate
 
-    var pageNumber = 1
-    var totalCount = 1
+    private var pageNumber = 1
+    private var totalCount = 1
 
     var games = [Game]() {
         didSet {
